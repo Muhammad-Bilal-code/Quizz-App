@@ -54,6 +54,7 @@ var qns = document.getElementById("qns");
 var selAns;
 var correctAns1;
 var marks = 0;
+var resDisp = document.getElementById("result");
 function handleStartQuiz() {
   console.log("Start Quizz");
   start.classList.add("d-none");
@@ -89,7 +90,7 @@ function handleShowQuestion() {
   for (i = 0; i < questions[qno - 1].options.length; i++) {
     // console.log(questions[qno - 1].options[i]);
     selAns = questions[qno - 1].options[i];
-    ans.innerHTML += `<div class="col-5 bg-black rounded p-2 border-box" onclick="handleNextQuestion(correctAns1,selAns)">${selAns}</div>`;
+    ans.innerHTML += `<div class="col-5 bg-black rounded p-2 border-box" onclick="handleNextQuestion(correctAns1,selAns,this)">${selAns}</div>`;
   }
   var timeHeading = document.getElementById("time");
   timeHeading.innerHTML = time;
@@ -103,16 +104,27 @@ function handleShowQuestion() {
   }, 1000);
 }
 
-function handleNextQuestion(correctAns, selectedAns) {
+function handleNextQuestion(correctAns, selectedAns, elm) {
+  console.log(elm.innerText);
   console.log(correctAns);
-  console.log(selectedAns);
+  //   console.log(selectedAns);
   clearInterval(interval);
   time = 60;
   qno++;
-  if (qno > 6) {
-    console.log("Quizz And");
+  if (qno > 6 && correctAns == elm.innerText) {
+    marks++;
     console.log(marks);
-  } else if (correctAns === selectedAns) {
+    console.log("Quizz And");
+    main.className = "d-none";
+    main2.className = "d-none";
+    resDisp.innerHTML = `<h2 class="text-center text-black">${marks} Out of ${questions.length} Correct</h2>`;
+  } else if (qno > 6 && correctAns !== elm.innerText) {
+    main.className = "d-none";
+    main2.className = "d-none";
+    resDisp.innerHTML = `<h2 class="text-center text-black">Result : ${marks} Out of ${questions.length} Correct</h2>`;
+    console.log(marks);
+    console.log("Quizz And");
+  } else if (correctAns === elm.innerText) {
     // console.log();
     marks++;
     console.log(marks);

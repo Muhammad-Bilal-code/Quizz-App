@@ -1,6 +1,6 @@
 var questions = [
   {
-    question: "Html Stands For",
+    question: "Html Stands For ______________",
     options: [
       "Hyper Text Makeup Language",
       "html",
@@ -10,7 +10,7 @@ var questions = [
     correctAns: "Hypertext markup language",
   },
   {
-    question: "Css Stands For",
+    question: "Css Stands For ______________",
     options: [
       "Casecading Style Sheet",
       "Java",
@@ -20,22 +20,22 @@ var questions = [
     correctAns: "Casecading Style Sheet",
   },
   {
-    question: "Js Stands For",
+    question: "Js Stands For ______________",
     options: ["Java Style", "Java Script", "Script", "Script Src"],
     correctAns: "Java Script",
   },
   {
-    question: "Dom Stands For",
+    question: "Dom Stands For ______________",
     options: ["Document Object Model", "html", "Css", "Java"],
     correctAns: "Document Object Model",
   },
   {
-    question: "Ram Stands For",
+    question: "Ram Stands For ______________",
     options: ["Read Only Memory", "Dom", "Random Acccess Memory", "For Pc"],
     correctAns: "Random Acccess Memory",
   },
   {
-    question: "Rom Stands For",
+    question: "Rom Stands For ______________",
     options: ["Hyper Text Markup Language", "html", "HTml", "Read Only Memory"],
     correctAns: "Read Only Memory",
   },
@@ -69,12 +69,12 @@ function handleShowQuestion() {
     
     <div class="row">
         <div
-          class="col-12 text-white text-center bg-black p-3 rounded d-flex justify-content-between"
+          class="col-12 text-white text-center bg-black p-3 rounded d-flex justify-content-between align-items-center"
           id="question"
         >
-          <span>${questions[qno - 1].question}</span>
-          <div><span id="time">Time Left : ${time}</span></div>
-          <div><span id="q-no">${qno}</span><span>/${totalQuestion}</span></div>
+          <span class="fs-5">${questions[qno - 1].question}</span>
+          <div ><span id="time" class="fs-5 p-1 bg-danger rounded">Time Left : ${time}</span></div>
+          <div class="fs-5 p-1 bg-danger rounded"><span id="q-no">${qno}</span><span>/${totalQuestion}</span></div>
         </div>
       </div>
     </div>
@@ -91,7 +91,7 @@ function handleShowQuestion() {
   for (i = 0; i < questions[qno - 1].options.length; i++) {
     // console.log(questions[qno - 1].options[i]);
     selAns = questions[qno - 1].options[i];
-    ans.innerHTML += `<div class="col-5 bg-black rounded p-2 border-box option" onclick="handleNextQuestion(correctAns1,this)">${selAns}</div>`;
+    ans.innerHTML += `<div class="col-5 bg-black rounded p-2 border-box option class="fs-5" onclick="handleNextQuestion(correctAns1,this)">${selAns}</div>`;
   }
   var timeHeading = document.getElementById("time");
   timeHeading.innerHTML = `Time Left : ${time}`;

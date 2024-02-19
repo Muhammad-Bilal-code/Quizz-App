@@ -90,7 +90,7 @@ function handleShowQuestion() {
   for (i = 0; i < questions[qno - 1].options.length; i++) {
     // console.log(questions[qno - 1].options[i]);
     selAns = questions[qno - 1].options[i];
-    ans.innerHTML += `<div class="col-5 bg-black rounded p-2 border-box option" onclick="handleNextQuestion(correctAns1,selAns,this)">${selAns}</div>`;
+    ans.innerHTML += `<div class="col-5 bg-black rounded p-2 border-box option" onclick="handleNextQuestion(correctAns1,this)">${selAns}</div>`;
   }
   var timeHeading = document.getElementById("time");
   timeHeading.innerHTML = `Time Left : ${time}`;
@@ -98,23 +98,24 @@ function handleShowQuestion() {
     time--;
     timeHeading.innerHTML = `Time Left : ${time}`;
     // console.log(time);
-    if (time == 0) {
-      handleNextQuestion();
+    if (time < 0) {
+      handleNextQuestion(correctAns1, this);
     }
   }, 1000);
 }
 
-function handleNextQuestion(correctAns, selectedAns, elm) {
-  console.log(elm.innerText);
+function handleNextQuestion(correctAns, elm) {
+  // console.log(elm.innerText);
   console.log(correctAns);
+  console.log(elm);
+  console.log(elm.innerText);
+  // console.log(empty);
   //   console.log(selectedAns);
   clearInterval(interval);
   time = 60;
   qno++;
   if (qno > 6 && correctAns == elm.innerText) {
     marks++;
-    console.log(marks);
-    console.log("Quizz And");
     main.className = "d-none";
     main2.className = "d-none";
     resDisp.innerHTML = `<h2 class="text-center text-black">${marks} Out of ${questions.length} Correct</h2>`;
@@ -122,14 +123,13 @@ function handleNextQuestion(correctAns, selectedAns, elm) {
     main.className = "d-none";
     main2.className = "d-none";
     resDisp.innerHTML = `<h2 class="text-center text-black">Result : ${marks} Out of ${questions.length} Correct</h2>`;
-    console.log(marks);
-    console.log("Quizz And");
-  } else if (correctAns === elm.innerText) {
+  } else if (correctAns == elm.innerText) {
     // console.log();
     marks++;
     console.log(marks);
     handleShowQuestion();
   } else {
+    console.log("Else");
     handleShowQuestion();
   }
 }

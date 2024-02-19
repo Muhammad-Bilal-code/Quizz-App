@@ -90,13 +90,13 @@ function handleShowQuestion() {
   for (i = 0; i < questions[qno - 1].options.length; i++) {
     // console.log(questions[qno - 1].options[i]);
     selAns = questions[qno - 1].options[i];
-    ans.innerHTML += `<div class="col-5 bg-black rounded p-2 border-box" onclick="handleNextQuestion(correctAns1,selAns,this)">${selAns}</div>`;
+    ans.innerHTML += `<div class="col-5 bg-black rounded p-2 border-box option" onclick="handleNextQuestion(correctAns1,selAns,this)">${selAns}</div>`;
   }
   var timeHeading = document.getElementById("time");
-  timeHeading.innerHTML = time;
+  timeHeading.innerHTML = `Time Left : ${time}`;
   interval = setInterval(function () {
     time--;
-    timeHeading.innerHTML = time;
+    timeHeading.innerHTML = `Time Left : ${time}`;
     // console.log(time);
     if (time == 0) {
       handleNextQuestion();

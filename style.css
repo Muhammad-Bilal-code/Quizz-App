@@ -10,3 +10,10 @@
     justify-content: center;
     gap: 10px;
 }
+.option{
+    cursor: pointer;
+}
+.option:hover{
+    background-color: white !important;
+    color: black;
+}

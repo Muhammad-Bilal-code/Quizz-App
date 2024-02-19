@@ -17,3 +17,9 @@
     background-color: white !important;
     color: black;
 }
+#result{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

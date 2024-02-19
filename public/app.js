@@ -44,6 +44,7 @@ var questions = [
 var time = 60;
 
 // console.log(timeHeading);
+
 var interval;
 var totalQuestion = questions.length;
 var qno = 1;
@@ -116,13 +117,16 @@ function handleNextQuestion(correctAns, elm) {
   qno++;
   if (qno > 6 && correctAns == elm.innerText) {
     marks++;
+    console.log(marks);
     main.className = "d-none";
     main2.className = "d-none";
-    resDisp.innerHTML = `<h2 class="text-center text-black">${marks} Out of ${questions.length} Correct</h2>`;
+    resDisp.classList.remove("d-none");
+    resDisp.innerHTML = `<h2 class="text-center text-black">${marks} Out of ${questions.length} Correct</h2><button class="btn btn-danger text-center" onclick="handleStartAgain()">Start Again</button>`;
   } else if (qno > 6 && correctAns !== elm.innerText) {
     main.className = "d-none";
     main2.className = "d-none";
-    resDisp.innerHTML = `<h2 class="text-center text-black">Result : ${marks} Out of ${questions.length} Correct</h2>`;
+    resDisp.classList.remove("d-none");
+    resDisp.innerHTML = `<h2 class="text-center text-black">Result : ${marks} Out of ${questions.length} Correct</h2><button class="btn btn-danger text-center" onclick="handleStartAgain()">Start Again</button>`;
   } else if (correctAns == elm.innerText) {
     // console.log();
     marks++;
@@ -132,4 +136,17 @@ function handleNextQuestion(correctAns, elm) {
     console.log("Else");
     handleShowQuestion();
   }
+}
+
+function handleStartAgain() {
+  qno = 1;
+  marks = 0;
+  console.log(qno);
+  // main.innerHTML = "";
+  // main2.innerHTML = "";
+  main.classList.remove("d-none");
+  main2.classList.remove("d-none");
+  resDisp.className = "d-none";
+
+  handleStartQuiz();
 }

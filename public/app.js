@@ -72,7 +72,7 @@ function handleShowQuestion() {
           class="col-12 text-white text-center bg-black p-3 rounded d-flex justify-content-between align-items-center"
           id="question"
         >
-          <span class="fs-5">${questions[qno - 1].question}</span>
+          <span class="fs-3">${questions[qno - 1].question}</span>
           <div ><span id="time" class="fs-5 p-1 bg-danger rounded">Time Left : ${time}</span></div>
           <div class="fs-5 p-1 bg-danger rounded"><span id="q-no">${qno}</span><span>/${totalQuestion}</span></div>
         </div>
@@ -91,7 +91,7 @@ function handleShowQuestion() {
   for (i = 0; i < questions[qno - 1].options.length; i++) {
     // console.log(questions[qno - 1].options[i]);
     selAns = questions[qno - 1].options[i];
-    ans.innerHTML += `<div class="col-5 bg-black rounded p-2 border-box option class="fs-5" onclick="handleNextQuestion(correctAns1,this)">${selAns}</div>`;
+    ans.innerHTML += `<div class="col-5 bg-black rounded p-2 border-box option fs-5" onclick="handleNextQuestion(correctAns1,this)">${selAns}</div>`;
   }
   var timeHeading = document.getElementById("time");
   timeHeading.innerHTML = `Time Left : ${time}`;
